@@ -64,7 +64,13 @@ Crie o arquivo "CheckList.vue", e adicione o codigo abaixo:
 ```html
 <template>
   <div>
-    <v-text-field label="Nova Tarefa" v-model="novaTarefa" @keypress="adicionarTarefa"></v-text-field>
+    <v-text-field
+      label="Nova Tarefa"
+      v-model="novaTarefa"
+      @keypress="keypressNovaTarefa"
+      append-outer-icon="mdi-send"
+      @click:append-outer="adicionarTarefa"
+    ></v-text-field>
 
     <v-list subheader two-line flat>
       <v-list-item-group :value="tarefasMarcadas" @change="change" multiple>
@@ -98,10 +104,17 @@ export default {
   },
   data: () => ({
     novaTarefa: null,
+    keypress: null,
   }),
   methods: {
-    adicionarTarefa(event) {
+    keypressNovaTarefa(event) {
+      this.keypress = event.code;
       if (event.code == "Enter") {
+        this.adicionarTarefa();
+      }
+    },
+    adicionarTarefa() {
+      if (this.novaTarefa) {
         this.$emit("add-tarefa", this.novaTarefa);
         this.novaTarefa = null;
       }

@@ -6,8 +6,44 @@ Ele é baseado no [artigo](https://vuejs-brasil.com.br/exporte-seu-projeto-vue-p
 
 ### 2.1 Criando o Repositorio no GitHub
 
-Crio o Repositorio **checklist** no GitHub.
+Crie o Repositorio **checklist** no GitHub.
 
+Vinculo o projeto atual com o repositorio criado.
+
+```shell
+git add .
+git commit -m "first commit"
+git remote add origin https://github.com/Gerley/checklist.git
+git push -u origin master
+```
+
+### 2.2 Configurando o Deploy
+
+Instale o push-dir.
+```shell
+npm install --save-dev push-dir
+```
+Execute o comando de build.
+```shell
+npm run build
+```
+
+No arquivo package.json, adicione o codigo abaixo.
+```json
+...
+"scripts": {
+    ...
+    "deploy": "push-dir --dir=dist --branch=gh-pages --cleanup"
+}
+...
+```
+
+Salve as alterações do projeto.
+```shell
+git add .
+git commit -m "Script de deploy"
+git push
+```
 
 https://medium.com/@shaibenshimol/build-todo-list-with-vuejs-vuex-vuetify-and-firebase-9eeed476e596
 

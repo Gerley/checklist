@@ -1,6 +1,12 @@
 <template>
   <div>
-    <v-text-field label="Nova Tarefa" v-model="novaTarefa" @keypress="adicionarTarefa"></v-text-field>
+    <v-text-field
+      label="Nova Tarefa"
+      v-model="novaTarefa"
+      @keypress="adicionarTarefa"
+      append-outer-icon="mdi-send"
+      @click:append-outer="sendMessage"
+    ></v-text-field>
 
     <v-list subheader two-line flat>
       <v-list-item-group :value="tarefasMarcadas" @change="change" multiple>
@@ -35,11 +41,11 @@ export default {
   },
   data: () => ({
     novaTarefa: null,
-    keypress: null
+    keypress: null,
   }),
   methods: {
     adicionarTarefa(event) {
-      this.keypress = event.code
+      this.keypress = event.code;
       if (event.code == "Enter") {
         this.$emit("add-tarefa", this.novaTarefa);
         this.novaTarefa = null;
@@ -47,6 +53,9 @@ export default {
     },
     change(event) {
       this.$emit("mark-tarefa", event);
+    },
+    sendMessage() {
+      this.keypress = "ok";
     },
   },
 };

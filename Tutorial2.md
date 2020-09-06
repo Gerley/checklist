@@ -45,6 +45,14 @@ git commit -m "Script de deploy"
 git push
 ```
 
+Por fim, execute o comando deploy
+```shell
+npm run deploy
+```
+
+### 2.3 Corrigindo as urls das dependencias
+
+
 https://medium.com/@shaibenshimol/build-todo-list-with-vuejs-vuex-vuetify-and-firebase-9eeed476e596
 
 

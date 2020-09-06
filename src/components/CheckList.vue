@@ -17,6 +17,7 @@
         </v-list-item>
       </v-list-item-group>
     </v-list>
+    {{keypress}}
   </div>
 </template>
 
@@ -34,9 +35,11 @@ export default {
   },
   data: () => ({
     novaTarefa: null,
+    keypress: null
   }),
   methods: {
     adicionarTarefa(event) {
+      this.keypress = event.code
       if (event.code == "Enter") {
         this.$emit("add-tarefa", this.novaTarefa);
         this.novaTarefa = null;

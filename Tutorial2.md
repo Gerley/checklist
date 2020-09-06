@@ -52,6 +52,22 @@ npm run deploy
 
 ### 2.3 Corrigindo as urls das dependencias
 
+Edite o arquivo vue.config.js, adicionando o comando abaixo:
+```json
+publicPath: process.env.NODE_ENV === 'production'
+    ? '/checklist/'
+    : '/'
+```
+
+execute os comandos abaixo para realizar a publicacao.
+```shell
+npm run build
+git add .
+git commit -m "set public path"
+git push
+npm run deploy
+```
+
 
 https://medium.com/@shaibenshimol/build-todo-list-with-vuejs-vuex-vuetify-and-firebase-9eeed476e596
 
